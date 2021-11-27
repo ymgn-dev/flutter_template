@@ -17,7 +17,7 @@ analyzer:
     - ios/**
     - lib/**/*.freezed.dart
     - lib/**/*.g.dart
-    - lib/gen/**/*.dart
+    - lib/generated/**/*.dart
 
 linter:
   rules:

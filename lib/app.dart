@@ -1,6 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_starter/generated/l10n.dart';
 
 class App extends StatelessWidget {
   App() : super();
@@ -10,14 +12,21 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const _Init(),
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),
       ],
+      localizationsDelegates: const [
+        L10n.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: L10n.delegate.supportedLocales,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      title: 'Flutter Demo',
+      home: const _Init(),
     );
   }
 }

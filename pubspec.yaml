@@ -33,6 +33,7 @@ flutter:
   uses-material-design: true
 
 flutter_gen:
+  output: lib/generated/
   colors:
     inputs:
       - assets/colors/colors.xml

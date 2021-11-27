@@ -15,7 +15,7 @@ A new Flutter project.
 - [x] flutter_gen
 - [x] colors.xml(for flutter_gen)
 - [ ] riverpod, hooks, freezed
-- [ ] grinder
+- [ ] grinder -> derry -> shell script
 - [ ] build.yaml
 - [ ] theme
 - [ ] import_sorter, import_path_converter

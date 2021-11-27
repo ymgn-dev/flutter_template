@@ -7,11 +7,14 @@ A new Flutter project.
 - [x] analysis_options.yaml
 - [ ] l10n
 - [ ] dart extension
-- [ ] flavor(dev, stg, prod)
-- [ ] firebase, podfile(pre-compile)
-- [ ] crashlytics, analytics
-- [ ] riverpod, hooks, freezed
+- [x] flavor(dev, stg, prod)
+- [x] launcher icon
 - [ ] splash screen
+- [x] firebase, podfile(pre-compile)
+- [x] crashlytics, analytics
+- [x] flutter_gen
+- [x] colors.xml(for flutter_gen)
+- [ ] riverpod, hooks, freezed
 - [ ] grinder
 - [ ] build.yaml
 - [ ] theme

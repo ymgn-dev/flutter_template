@@ -39,3 +39,9 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Flavor
+**/android/app/src/main/res/mipmap*/
+**/android/app/google-services.json
+**/ios/Flutter/DartDefines.xcconfig
+**/ios/GoogleService-Info.plist

@@ -4,7 +4,7 @@ A new Flutter project.
 
 ## TODO
 
-- [ ] analysis_options.yaml
+- [x] analysis_options.yaml
 - [ ] l10n
 - [ ] dart extension
 - [ ] flavor(dev, stg, prod)

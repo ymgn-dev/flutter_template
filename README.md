@@ -9,7 +9,7 @@ A new Flutter project.
 - [ ] dart extension
 - [x] flavor(dev, stg, prod)
 - [x] launcher icon
-- [ ] splash screen
+- [x] splash screen
 - [x] firebase, podfile(pre-compile)
 - [x] crashlytics, analytics
 - [x] flutter_gen

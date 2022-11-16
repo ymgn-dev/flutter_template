@@ -1,5 +1,5 @@
 {
-  "Creating a class using Freezed": {
+  "Snippet: Creating a class using Freezed": {
     "scope": "dart",
     "prefix": ["freezed", "model"],
     "description": "Creating a class using Freezed.",

@@ -1,0 +1,21 @@
+{
+  "Snippet: AutoDisposeAsyncNotifierProvider": {
+    "scope": "dart",
+    "prefix": ["autoDisposeAsyncNotifierProvider"],
+    "description": "Code generation for AutoDisposeAsyncNotifierProvider",
+    "body": [
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@Riverpod(keepAlive: false)",
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} extends _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {",
+      "  @override",
+      "  FutureOr<$2> build() async {",
+      "    return $3;",
+      "  }",
+      "}",
+      "$0"
+    ]
+  }
+}

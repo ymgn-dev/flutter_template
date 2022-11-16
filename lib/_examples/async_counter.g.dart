@@ -117,3 +117,87 @@ abstract class _$AsyncCounter extends BuildlessAutoDisposeAsyncNotifier<int> {
     int familyArg,
   );
 }
+
+String $AsyncNHash() => r'db24e6fb4727f794bc39fd3e0e023b1ba95e3056';
+
+/// See also [AsyncN].
+class AsyncNProvider extends AutoDisposeAsyncNotifierProviderImpl<AsyncN, int> {
+  AsyncNProvider(
+    this.familyArg,
+  ) : super(
+          () => AsyncN()..familyArg = familyArg,
+          from: asyncNProvider,
+          name: r'asyncNProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : $AsyncNHash,
+        );
+
+  final int familyArg;
+
+  @override
+  bool operator ==(Object other) {
+    return other is AsyncNProvider && other.familyArg == familyArg;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, familyArg.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+
+  @override
+  FutureOr<int> runNotifierBuild(
+    covariant _$AsyncN notifier,
+  ) {
+    return notifier.build(
+      familyArg,
+    );
+  }
+}
+
+typedef AsyncNRef = AutoDisposeAsyncNotifierProviderRef<int>;
+
+/// See also [AsyncN].
+final asyncNProvider = AsyncNFamily();
+
+class AsyncNFamily extends Family<AsyncValue<int>> {
+  AsyncNFamily();
+
+  AsyncNProvider call(
+    int familyArg,
+  ) {
+    return AsyncNProvider(
+      familyArg,
+    );
+  }
+
+  @override
+  AutoDisposeAsyncNotifierProviderImpl<AsyncN, int> getProviderOverride(
+    covariant AsyncNProvider provider,
+  ) {
+    return call(
+      provider.familyArg,
+    );
+  }
+
+  @override
+  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+
+  @override
+  List<ProviderOrFamily>? get dependencies => null;
+
+  @override
+  String? get name => r'asyncNProvider';
+}
+
+abstract class _$AsyncN extends BuildlessAutoDisposeAsyncNotifier<int> {
+  late final int familyArg;
+
+  FutureOr<int> build(
+    int familyArg,
+  );
+}

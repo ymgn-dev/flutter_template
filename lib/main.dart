@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_template/_examples/counter.dart';
 import 'package:flutter_template/utils/logger.dart';
 import 'package:flutter_template/utils/navigator_key.dart';
 import 'package:flutter_template/utils/scaffold_messenger_key.dart';
@@ -34,8 +33,6 @@ class App extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(counterProvider(0));
-
     return MaterialApp(
       navigatorKey: navigatorKey,
       scaffoldMessengerKey: scaffoldMessengerKey,

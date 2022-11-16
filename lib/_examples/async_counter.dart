@@ -30,3 +30,15 @@ class AsyncCounter extends _$AsyncCounter {
     }
   }
 }
+
+// x AutoDisposeAsyncNotifierProvider
+// x AutoDisposeFamilyAsyncNotifierProvider
+// x AsyncNotifierProvider
+// x FamilyAsyncNotifierProvider
+@Riverpod(keepAlive: false)
+class AsyncN extends _$AsyncN {
+  @override
+  FutureOr<int> build(int familyArg) async {
+    return 0;
+  }
+}

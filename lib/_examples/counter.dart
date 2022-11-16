@@ -1,4 +1,4 @@
-import 'package:flutter_template/provider_examples/hello_world.dart';
+import 'package:flutter_template/_examples/hello_world.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter.g.dart';

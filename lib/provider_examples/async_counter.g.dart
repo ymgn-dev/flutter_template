@@ -29,21 +29,91 @@ class _SystemHash {
   }
 }
 
-String $AsyncCounterHash() => r'100cd5501e84e59f3cb9c31ecd336fc5d6ff2d3d';
+String $AsyncCounterHash() => r'cc81f1a3efc63508103b4fbd6f4a87f474491d6c';
 
 /// Generate AsyncNotifierProvider
 ///
 /// Copied from [AsyncCounter].
-final asyncCounterProvider =
-    AutoDisposeAsyncNotifierProvider<AsyncCounter, int>(
-  AsyncCounter.new,
-  name: r'asyncCounterProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : $AsyncCounterHash,
-);
+class AsyncCounterProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<AsyncCounter, int> {
+  AsyncCounterProvider(
+    this.familyArg,
+  ) : super(
+          () => AsyncCounter()..familyArg = familyArg,
+          from: asyncCounterProvider,
+          name: r'asyncCounterProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : $AsyncCounterHash,
+        );
+
+  final int familyArg;
+
+  @override
+  bool operator ==(Object other) {
+    return other is AsyncCounterProvider && other.familyArg == familyArg;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, familyArg.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+
+  @override
+  FutureOr<int> runNotifierBuild(
+    covariant _$AsyncCounter notifier,
+  ) {
+    return notifier.build(
+      familyArg,
+    );
+  }
+}
+
 typedef AsyncCounterRef = AutoDisposeAsyncNotifierProviderRef<int>;
 
-abstract class _$AsyncCounter extends AutoDisposeAsyncNotifier<int> {
+/// Generate AsyncNotifierProvider
+///
+/// Copied from [AsyncCounter].
+final asyncCounterProvider = AsyncCounterFamily();
+
+class AsyncCounterFamily extends Family<AsyncValue<int>> {
+  AsyncCounterFamily();
+
+  AsyncCounterProvider call(
+    int familyArg,
+  ) {
+    return AsyncCounterProvider(
+      familyArg,
+    );
+  }
+
   @override
-  FutureOr<int> build();
+  AutoDisposeAsyncNotifierProviderImpl<AsyncCounter, int> getProviderOverride(
+    covariant AsyncCounterProvider provider,
+  ) {
+    return call(
+      provider.familyArg,
+    );
+  }
+
+  @override
+  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+
+  @override
+  List<ProviderOrFamily>? get dependencies => null;
+
+  @override
+  String? get name => r'asyncCounterProvider';
+}
+
+abstract class _$AsyncCounter extends BuildlessAutoDisposeAsyncNotifier<int> {
+  late final int familyArg;
+
+  FutureOr<int> build(
+    int familyArg,
+  );
 }

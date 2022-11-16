@@ -29,22 +29,90 @@ class _SystemHash {
   }
 }
 
-String $CounterNotifierHash() => r'132953a154c80ff168d02021668b204e36f70778';
+String $CounterHash() => r'0dd6190a675942f35f310db98f285e68deaca936';
 
 /// Generate NotifierProvider
 ///
-/// Copied from [CounterNotifier].
-final counterNotifierProvider =
-    AutoDisposeNotifierProvider<CounterNotifier, int>(
-  CounterNotifier.new,
-  name: r'counterNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : $CounterNotifierHash,
-);
-typedef CounterNotifierRef = AutoDisposeNotifierProviderRef<int>;
+/// Copied from [Counter].
+class CounterProvider extends AutoDisposeNotifierProviderImpl<Counter, int> {
+  CounterProvider(
+    this.familyArg,
+  ) : super(
+          () => Counter()..familyArg = familyArg,
+          from: counterProvider,
+          name: r'counterProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : $CounterHash,
+        );
 
-abstract class _$CounterNotifier extends AutoDisposeNotifier<int> {
+  final int familyArg;
+
   @override
-  int build();
+  bool operator ==(Object other) {
+    return other is CounterProvider && other.familyArg == familyArg;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, familyArg.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+
+  @override
+  int runNotifierBuild(
+    covariant _$Counter notifier,
+  ) {
+    return notifier.build(
+      familyArg,
+    );
+  }
+}
+
+typedef CounterRef = AutoDisposeNotifierProviderRef<int>;
+
+/// Generate NotifierProvider
+///
+/// Copied from [Counter].
+final counterProvider = CounterFamily();
+
+class CounterFamily extends Family<int> {
+  CounterFamily();
+
+  CounterProvider call(
+    int familyArg,
+  ) {
+    return CounterProvider(
+      familyArg,
+    );
+  }
+
+  @override
+  AutoDisposeNotifierProviderImpl<Counter, int> getProviderOverride(
+    covariant CounterProvider provider,
+  ) {
+    return call(
+      provider.familyArg,
+    );
+  }
+
+  @override
+  List<ProviderOrFamily>? get allTransitiveDependencies => null;
+
+  @override
+  List<ProviderOrFamily>? get dependencies => null;
+
+  @override
+  String? get name => r'counterProvider';
+}
+
+abstract class _$Counter extends BuildlessAutoDisposeNotifier<int> {
+  late final int familyArg;
+
+  int build(
+    int familyArg,
+  );
 }

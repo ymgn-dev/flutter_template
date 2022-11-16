@@ -1,12 +1,17 @@
+import 'package:flutter_template/provider_examples/hello_world.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter.g.dart';
 
 /// Generate NotifierProvider
 @Riverpod(keepAlive: false)
-class CounterNotifier extends _$CounterNotifier {
+class Counter extends _$Counter {
   @override
-  int build() => 0;
+  int build(int familyArg) {
+    ref.watch(helloWorldProvider);
+
+    return 0;
+  }
 
   increment() {
     state = state + 1;

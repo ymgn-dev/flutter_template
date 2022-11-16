@@ -1,0 +1,21 @@
+{
+  "Snippet: NotifierProvider": {
+    "scope": "dart",
+    "prefix": ["notifierProvider"],
+    "description": "Code generation for NotifierProvider",
+    "body": [
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@Riverpod(keepAlive: true)",
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} extends _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {",
+      "  @override",
+      "  $2 build() {",
+      "    return $3;",
+      "  }",
+      "}",
+      "$0"
+    ]
+  }
+}

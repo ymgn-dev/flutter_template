@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'counter.g.dart';
 
+/// Generate NotifierProvider
 @Riverpod(keepAlive: false)
 class Counter extends _$Counter {
   @override

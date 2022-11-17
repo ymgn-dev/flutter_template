@@ -21,7 +21,19 @@ extension NavigatorExtension on GlobalKey<NavigatorState> {
     return currentState?.pushReplacement(newRoute);
   }
 
+  bool canPop() {
+    return currentState?.canPop() ?? false;
+  }
+
   void pop<T extends Object?>([T? result]) {
     currentState?.pop();
+  }
+
+  bool tryPop<T extends Object?>([T? result]) {
+    if (canPop()) {
+      pop<T>(result);
+      return true;
+    }
+    return false;
   }
 }

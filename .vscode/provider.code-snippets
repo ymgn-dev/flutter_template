@@ -9,7 +9,7 @@
       "part '$TM_FILENAME_BASE.g.dart';",
       "",
       "@Riverpod(keepAlive: ${1|true,false|})",
-      "${2} ${3}(${3/(.*)/${1:/pascalcase}/}Ref ref,",
+      "${2:returnType} ${3/(.*)/${1:/camelcase}/}(${3/(.*)/${1:/pascalcase}/}Ref ref,",
       "    ${4:int familyArg}) async {",
       "  return $5;",
       "}",

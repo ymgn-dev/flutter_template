@@ -29,11 +29,9 @@ class _SystemHash {
   }
 }
 
-String $CounterHash() => r'0dd6190a675942f35f310db98f285e68deaca936';
+String $CounterHash() => r'c3cce4887e6991b5500be7494dd7e38887df4c8a';
 
-/// Generate NotifierProvider
-///
-/// Copied from [Counter].
+/// See also [Counter].
 class CounterProvider extends AutoDisposeNotifierProviderImpl<Counter, int> {
   CounterProvider(
     this.familyArg,
@@ -74,9 +72,7 @@ class CounterProvider extends AutoDisposeNotifierProviderImpl<Counter, int> {
 
 typedef CounterRef = AutoDisposeNotifierProviderRef<int>;
 
-/// Generate NotifierProvider
-///
-/// Copied from [Counter].
+/// See also [Counter].
 final counterProvider = CounterFamily();
 
 class CounterFamily extends Family<int> {

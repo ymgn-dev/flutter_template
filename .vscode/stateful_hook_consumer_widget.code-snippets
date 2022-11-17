@@ -1,7 +1,7 @@
 {
   "Snippet: StatefulHookConsumerWidget": {
     "scope": "dart",
-    "prefix": ["statefulHookConsumerWidget"],
+    "prefix": ["statefulHookConsumerWidget", "stf"],
     "description": "Create an StatefulHookConsumerWidget",
     "body": [
       "import 'package:flutter/material.dart';",

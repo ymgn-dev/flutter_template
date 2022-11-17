@@ -29,13 +29,13 @@ class _SystemHash {
   }
 }
 
-String $helloWorldHash() => r'b7a0b7c362f6a29e59d591057b13f5a4f479f444';
+String $helloWorldHash() => r'53db06d00168a6236a7419b61bfa068341557a48';
 
 /// See also [helloWorld].
-final helloWorldProvider = AutoDisposeProvider<int>(
+final helloWorldProvider = Provider<String>(
   helloWorld,
   name: r'helloWorldProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : $helloWorldHash,
 );
-typedef HelloWorldRef = AutoDisposeProviderRef<int>;
+typedef HelloWorldRef = ProviderRef<String>;

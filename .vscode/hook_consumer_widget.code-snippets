@@ -1,7 +1,7 @@
 {
   "Snippet: HookConsumerWidget": {
     "scope": "dart",
-    "prefix": ["hookConsumerWidget"],
+    "prefix": ["hookConsumerWidget", "stl"],
     "description": "Create an HookConsumerWidget",
     "body": [
       "import 'package:flutter/material.dart';",

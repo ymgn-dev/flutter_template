@@ -1,0 +1,15 @@
+{
+  "ref.listen": {
+    "scope": "dart",
+    "prefix": "reflisten",
+    "description": "Create a ref.listen",
+    "body": [
+      "ref.listen<$1>(",
+      "  $2,",
+      "  ((previous, next) {",
+      "    $3",
+      "  }),",
+      ");"
+    ]
+  }
+}

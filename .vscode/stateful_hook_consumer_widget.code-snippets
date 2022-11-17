@@ -1,0 +1,31 @@
+{
+  "Snippet: StatefulHookConsumerWidget": {
+    "scope": "dart",
+    "prefix": ["statefulHookConsumerWidget"],
+    "description": "Create an StatefulHookConsumerWidget",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "import 'package:hooks_riverpod/hooks_riverpod.dart';",
+      "",
+      "class ${1/(.*)/${1:/pascalcase}/} extends StatefulHookConsumerWidget {",
+      "  // const ${1/(.*)/${1:/pascalcase}/}({super.key});",
+      "  const ${1/(.*)/${1:/pascalcase}/}._() : super();",
+      "",
+      "  static Route<${2:void}> route() => MaterialPageRoute<${2:void}>(",
+      "        builder: (_) => const ${1/(.*)/${1:/pascalcase}/}._(),",
+      "      );",
+      "",
+      "  @override",
+      "  ConsumerState<ConsumerStatefulWidget> createState() => _${1/(.*)/${1:/pascalcase}/}State();",
+      "}",
+      "",
+      "class _${1/(.*)/${1:/pascalcase}/}State extends ConsumerState<${1/(.*)/${1:/pascalcase}/}> {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return Container();",
+      "  }",
+      "}",
+      "$0"
+    ]
+  }
+}

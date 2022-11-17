@@ -1,0 +1,26 @@
+{
+  "Snippet: HookConsumerWidget": {
+    "scope": "dart",
+    "prefix": ["hookConsumerWidget"],
+    "description": "Create an HookConsumerWidget",
+    "body": [
+      "import 'package:flutter/material.dart';",
+      "import 'package:hooks_riverpod/hooks_riverpod.dart';",
+      "",
+      "class ${1/(.*)/${1:/pascalcase}/} extends HookConsumerWidget {",
+      "  // const ${1/(.*)/${1:/pascalcase}/}({super.key});",
+      "  const ${1/(.*)/${1:/pascalcase}/}._() : super();",
+      "",
+      "  static Route<${2:void}> route() => MaterialPageRoute<${2:void}>(",
+      "        builder: (_) => const ${1/(.*)/${1:/pascalcase}/}._(),",
+      "      );",
+      "",
+      "  @override",
+      "  Widget build(BuildContext context, WidgetRef ref) {",
+      "    return Container();",
+      "  }",
+      "}",
+      "$0"
+    ]
+  }
+}

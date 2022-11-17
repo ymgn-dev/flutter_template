@@ -1,8 +1,8 @@
 {
-  "Snippet: Creating a class using Freezed": {
+  "Snippet: Freezed class": {
     "scope": "dart",
-    "prefix": ["freezed", "model"],
-    "description": "Creating a class using Freezed.",
+    "prefix": ["freezed"],
+    "description": "Create a Freezed class",
     "body": [
       "// ignore: unused_import",
       "import 'package:freezed_annotation/freezed_annotation.dart';",

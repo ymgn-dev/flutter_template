@@ -2,17 +2,17 @@
   "Snippet: AsyncNotifierProvider": {
     "scope": "dart",
     "prefix": ["asyncNotifierProvider"],
-    "description": "Code generation for AsyncNotifierProvider",
+    "description": "Create an AsyncNotifierProvider",
     "body": [
       "import 'package:riverpod_annotation/riverpod_annotation.dart';",
       "",
       "part '$TM_FILENAME_BASE.g.dart';",
       "",
-      "@Riverpod(keepAlive: true)",
-      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} extends _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {",
+      "@Riverpod(keepAlive: ${1|true,false|})",
+      "class ${2:${TM_FILENAME_BASE/(.*)/${2:/pascalcase}/}} extends _$${2:${TM_FILENAME_BASE/(.*)/${2:/pascalcase}/}} {",
       "  @override",
-      "  FutureOr<$2> build() async {",
-      "    return $3;",
+      "  FutureOr<$3> build(${4:int familyArg}) async {",
+      "    return $5;",
       "  }",
       "}",
       "$0"

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 extension ContextExtension on BuildContext {
   bool get isDark => MediaQuery.of(this).platformBrightness == Brightness.dark;
 
-  double get deviceWidth => MediaQuery.of(this).size.width;
-  double get deviceHeight => MediaQuery.of(this).size.height;
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
 
   bool get isAndroid => Theme.of(this).platform == TargetPlatform.android;
   bool get isIOS => Theme.of(this).platform == TargetPlatform.iOS;
 
   double get appBarHeight => MediaQuery.of(this).padding.top + kToolbarHeight;
 
-  ScrollPhysics get physics =>
+  ScrollPhysics get scrollPhysics =>
       isAndroid ? const ClampingScrollPhysics() : const BouncingScrollPhysics();
 
   void hideKeyboard() {

@@ -5,6 +5,49 @@ import 'package:flutter_template/utils/navigator_key.dart';
 import 'package:flutter_template/utils/scaffold_messenger_key.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+class _ProviderLogger extends ProviderObserver {
+  @override
+  void didAddProvider(
+    ProviderBase provider,
+    Object? value,
+    ProviderContainer container,
+  ) {
+    logger.info('''
+{
+  "status": "didAddProvider",
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "value": "$value"
+}''');
+  }
+
+  @override
+  void didUpdateProvider(
+    ProviderBase provider,
+    Object? previousValue,
+    Object? newValue,
+    ProviderContainer container,
+  ) {
+    logger.info('''
+{
+  "status": "didUpdateProvider",
+  "provider": "${provider.name ?? provider.runtimeType}",
+  "newValue": "$newValue"
+}''');
+  }
+
+  @override
+  void didDisposeProvider(
+    ProviderBase provider,
+    ProviderContainer container,
+  ) {
+    logger.info('''
+{
+  "status": "didDisposeProvider",
+  "provider": "${provider.name ?? provider.runtimeType}",
+}''');
+  }
+}
+
 Future<void> main() async {
   if (kDebugMode) {
     logger.enableOutputStackTrace = true;
@@ -18,6 +61,7 @@ Future<void> main() async {
     overrides: [
       // ...
     ],
+    observers: [_ProviderLogger()],
   );
 
   runApp(

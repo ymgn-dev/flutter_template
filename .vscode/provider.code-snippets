@@ -10,7 +10,7 @@
       "",
       "@Riverpod(keepAlive: ${1|true,false|})",
       "${2:returnType} ${3/(.*)/${1:/camelcase}/}(${3/(.*)/${1:/pascalcase}/}Ref ref,",
-      "    ${4:int familyArg}) async {",
+      "    ${4:int familyArg}) {",
       "  return $5;",
       "}",
       "$0"

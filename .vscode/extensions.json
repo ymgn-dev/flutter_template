@@ -4,6 +4,11 @@
     "dart-code.flutter",
     "streetsidesoftware.code-spell-checker",
     "toba.vsfire",
-    "usernamehw.errorlens"
+    "usernamehw.errorlens",
+    "pflannery.vscode-versionlens",
+    "aaron-bond.better-comments",
+    "patbenatar.advanced-new-file",
+    "jsayol.firebase-explorer",
+    "plibither8.remove-comments"
   ]
 }

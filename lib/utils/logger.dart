@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 // ignore: depend_on_referenced_packages
 import 'package:stack_trace/stack_trace.dart' show Trace;
 
-final logger = AppLogger();
+final logger = AppLogger.instance;
 
 enum _Color {
   red,
@@ -18,8 +18,10 @@ enum _Color {
 /// スタックトレースをログ表示するには
 /// [enableOutputStackTrace]をtrueにすること
 class AppLogger {
-  factory AppLogger() => _instance;
   AppLogger._();
+
+  static AppLogger get instance => _instance;
+
   static final _instance = AppLogger._();
 
   final _prefix = <_Color, String>{

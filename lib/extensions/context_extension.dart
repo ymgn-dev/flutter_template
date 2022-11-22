@@ -9,8 +9,6 @@ extension ContextExtension on BuildContext {
   bool get isAndroid => Theme.of(this).platform == TargetPlatform.android;
   bool get isIOS => Theme.of(this).platform == TargetPlatform.iOS;
 
-  double get appBarHeight => MediaQuery.of(this).padding.top + kToolbarHeight;
-
   ScrollPhysics get scrollPhysics =>
       isAndroid ? const ClampingScrollPhysics() : const BouncingScrollPhysics();
 

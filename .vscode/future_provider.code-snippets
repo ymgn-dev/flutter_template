@@ -1,0 +1,19 @@
+{
+  "Snippet: FutureProvider": {
+    "scope": "dart",
+    "prefix": ["futureProvider"],
+    "description": "Create a FutureProvider",
+    "body": [
+      "import 'package:riverpod_annotation/riverpod_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@Riverpod(keepAlive: ${1|true,false|})",
+      "Future<${2:returnType}> ${3/(.*)/${1:/camelcase}/}(${3/(.*)/${1:/pascalcase}/}Ref ref,",
+      "    ${4:int familyArg}) async {",
+      "  return $5;",
+      "}",
+      "$0"
+    ]
+  }
+}

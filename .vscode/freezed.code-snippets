@@ -1,0 +1,35 @@
+{
+  "Snippet: Freezed class": {
+    "scope": "dart",
+    "prefix": ["freezed"],
+    "description": "Create a Freezed class",
+    "body": [
+      "// ignore: unused_import",
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.freezed.dart';",
+      "part '$TM_FILENAME_BASE.g.dart';",
+      "",
+      "@freezed",
+      "class ${1/(.*)/${1:/pascalcase}/} with _$${1/(.*)/${1:/pascalcase}/} {",
+      "  const factory ${1/(.*)/${1:/pascalcase}/}({",
+      "    required String ${2:firstName},",
+      "    required String ${3:lastName},",
+      "  }) = _${1/(.*)/${1:/pascalcase}/};",
+      "",
+      "  const ${1/(.*)/${1:/pascalcase}/}._();",
+      "  factory ${1/(.*)/${1:/pascalcase}/}.fromJson(Map<String, Object?> json) => _$${1/(.*)/${1:/pascalcase}/}FromJson(json);",
+      "",
+      "  // Union types and Sealed classes",
+      "  // const factory ${1/(.*)/${1:/pascalcase}/}.data(int value) = Data;",
+      "  // const factory ${1/(.*)/${1:/pascalcase}/}.loading() = Loading;",
+      "  // const factory ${1/(.*)/${1:/pascalcase}/}.error([String? message]) = Error;",
+      "",
+      "  void method() {",
+      "    print('hello world');",
+      "  }",
+      "}",
+      "$0"
+    ]
+  }
+}

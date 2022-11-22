@@ -1,0 +1,15 @@
+{
+  "Snippet: HookConsumer": {
+    "scope": "dart",
+    "prefix": ["hookConsumer"],
+    "description": "Create an HookConsumer",
+    "body": [
+      "HookConsumer(",
+      "  builder: ((context, ref, child) {",
+      "    return $1;",
+      "  }),",
+      "),",
+      "$0"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "Snippet: Singleton": {
+    "scope": "dart",
+    "prefix": ["singleton"],
+    "description": "Create a Singleton",
+    "body": [
+      "class $1 {",
+      "  $1._();",
+      "",
+      "  static $1 get instance => _instance;",
+      "  static final _instance = $1._();",
+      "}",
+      "$0"
+    ]
+  }
+}

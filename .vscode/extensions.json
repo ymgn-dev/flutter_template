@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    // Dart / Flutter
+    "dart-code.dart-code",
+    "dart-code.flutter",
+
+    // Firebase
+    "jsayol.firebase-explorer",
+    "toba.vsfire",
+
+    // Others
+    "aaron-bond.better-comments",
+    "patbenatar.advanced-new-file",
+    "pflannery.vscode-versionlens",
+    "plibither8.remove-comments",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens"
+  ]
+}

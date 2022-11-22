@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "**/*.freezed.dart": true,
+    "**/*.g.dart": true,
+    "**/generated/*": true
+  },
+  "cSpell.words": [
+    "cupertino",
+    "firestore",
+    "Ngram",
+    "riverpod",
+    "Schyler",
+    "unfocus",
+    "xcconfig",
+    "ymgn"
+  ]
+}

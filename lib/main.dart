@@ -1,8 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_template/utils/configs.dart';
 import 'package:flutter_template/utils/logger.dart';
-import 'package:flutter_template/utils/navigator_key.dart';
-import 'package:flutter_template/utils/scaffold_messenger_key.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class _ProviderLogger extends ProviderObserver {

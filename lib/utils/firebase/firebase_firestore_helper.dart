@@ -196,6 +196,12 @@ class FirebaseFirestoreHelper {
 
     return snapshot.count;
   }
+
+  Future<void> delete({
+    required String documentPath,
+  }) async {
+    await _db.doc(documentPath).delete();
+  }
 }
 
 class PaginationBuilder<T> {

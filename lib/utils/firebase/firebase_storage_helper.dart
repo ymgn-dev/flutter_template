@@ -1,12 +1,12 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_template/utils/firebase/firebase_helper.dart';
 
 export 'dart:io';
 
+export 'package:firebase_storage/firebase_storage.dart';
 export 'package:flutter/foundation.dart';
-export 'package:flutter_template/utils/firebase/firebase_helper.dart';
 
 class FirebaseStorageHelper {
   FirebaseStorageHelper._();

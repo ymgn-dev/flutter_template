@@ -195,9 +195,17 @@ class FirebaseFirestoreHelper {
 
   Future<int> count<T extends Object>({
     required String collectionPath,
+    required T Function(Map<String, dynamic> json) decode,
+    Query<T> Function(CollectionReference<T> reference)? queryBuilder,
   }) async {
-    final aggregateQuery = _db.collection(collectionPath).count();
-    final snapshot = await aggregateQuery.get();
+    final reference = _db.collection(collectionPath).withConverter(
+          fromFirestore: (snapshot, options) => decode(snapshot.data()!),
+          toFirestore: (_, __) => {},
+        );
+
+    final query = queryBuilder?.call(reference) ?? reference;
+
+    final snapshot = await query.count().get();
 
     return snapshot.count;
   }

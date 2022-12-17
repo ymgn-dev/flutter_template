@@ -6,6 +6,8 @@ export 'dart:async';
 
 export 'package:cloud_firestore/cloud_firestore.dart';
 
+typedef JsonMap = Map<String, dynamic>;
+
 class Document<T> {
   Document({
     required this.id,
@@ -15,7 +17,7 @@ class Document<T> {
   });
 
   final String id;
-  final DocumentReference<T> reference;
+  final DocumentReference<JsonMap> reference;
   final T data;
   final SnapshotMetadata metadata;
 }
@@ -27,6 +29,9 @@ class FirebaseFirestoreHelper {
   static final _instance = FirebaseFirestoreHelper._();
 
   static final _db = FirebaseFirestore.instance;
+
+  static DocumentReference<JsonMap> _reference(String documentPath) =>
+      _db.doc(documentPath);
 
   Future<Document<T>> get<T extends Object>({
     required String documentPath,
@@ -49,7 +54,7 @@ class FirebaseFirestoreHelper {
 
     return Document(
       id: snapshot.id,
-      reference: snapshot.reference,
+      reference: _reference(documentPath),
       data: snapshot.data()!,
       metadata: snapshot.metadata,
     );
@@ -106,7 +111,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: e.reference,
+            reference: _reference(e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -145,7 +150,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: e.reference,
+            reference: _reference(e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -237,7 +242,7 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: e.reference,
+            reference: FirebaseFirestoreHelper._reference(e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -268,7 +273,7 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: e.reference,
+            reference: FirebaseFirestoreHelper._reference(e.id),
             data: e.data(),
             metadata: e.metadata,
           ),

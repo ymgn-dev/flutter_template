@@ -60,7 +60,7 @@ class FirebaseFirestoreHelper {
     );
   }
 
-  Stream<DocumentSnapshot<T>> notifyDocumentUpdates<T extends Object>({
+  Stream<Document<T>> notifyDocumentUpdates<T extends Object>({
     required String documentPath,
     required T Function(Map<String, dynamic> json) decode,
     bool includeMetadataChanges = false,
@@ -73,10 +73,18 @@ class FirebaseFirestoreHelper {
           },
           toFirestore: (_, __) => {},
         )
-        .snapshots(includeMetadataChanges: includeMetadataChanges);
+        .snapshots(includeMetadataChanges: includeMetadataChanges)
+        .asyncMap(
+          (snapshot) => Document(
+            id: snapshot.id,
+            reference: _reference(documentPath),
+            data: snapshot.data()!,
+            metadata: snapshot.metadata,
+          ),
+        );
   }
 
-  Stream<QuerySnapshot<T>> notifyCollectionUpdates<T extends Object>({
+  Stream<List<Document<T>>> notifyCollectionUpdates<T extends Object>({
     required String collectionPath,
     required T Function(Map<String, dynamic> json) decode,
     Query<T> Function(CollectionReference<T> reference)? queryBuilder,
@@ -89,7 +97,20 @@ class FirebaseFirestoreHelper {
 
     final query = queryBuilder?.call(reference) ?? reference;
 
-    return query.snapshots(includeMetadataChanges: includeMetadataChanges);
+    return query
+        .snapshots(includeMetadataChanges: includeMetadataChanges)
+        .asyncMap(
+          (querySnapshot) => querySnapshot.docs
+              .map(
+                (snapshot) => Document(
+                  id: snapshot.id,
+                  reference: _reference(snapshot.reference.path),
+                  data: snapshot.data(),
+                  metadata: snapshot.metadata,
+                ),
+              )
+              .toList(),
+        );
   }
 
   Future<List<Document<T>>> list<T extends Object>({

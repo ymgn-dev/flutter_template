@@ -30,8 +30,11 @@ class FirebaseFirestoreHelper {
 
   static final _db = FirebaseFirestore.instance;
 
-  static DocumentReference<JsonMap> _reference(String documentPath) =>
-      _db.doc(documentPath);
+  DocumentReference<JsonMap> documentReference({
+    required String documentPath,
+  }) {
+    return _db.doc(documentPath);
+  }
 
   Future<Document<T>> get<T extends Object>({
     required String documentPath,
@@ -54,7 +57,7 @@ class FirebaseFirestoreHelper {
 
     return Document(
       id: snapshot.id,
-      reference: _reference(documentPath),
+      reference: documentReference(documentPath: documentPath),
       data: snapshot.data()!,
       metadata: snapshot.metadata,
     );
@@ -77,7 +80,7 @@ class FirebaseFirestoreHelper {
         .asyncMap(
           (snapshot) => Document(
             id: snapshot.id,
-            reference: _reference(documentPath),
+            reference: documentReference(documentPath: documentPath),
             data: snapshot.data()!,
             metadata: snapshot.metadata,
           ),
@@ -104,7 +107,9 @@ class FirebaseFirestoreHelper {
               .map(
                 (snapshot) => Document(
                   id: snapshot.id,
-                  reference: _reference(snapshot.reference.path),
+                  reference: documentReference(
+                    documentPath: snapshot.reference.path,
+                  ),
                   data: snapshot.data(),
                   metadata: snapshot.metadata,
                 ),
@@ -132,7 +137,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: _reference(e.id),
+            reference: documentReference(documentPath: e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -171,7 +176,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: _reference(e.id),
+            reference: documentReference(documentPath: e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -194,7 +199,7 @@ class FirebaseFirestoreHelper {
     await _db.collection(collectionPath).add(data);
   }
 
-  Future<void> transaction<T extends Object>({
+  Future<void> transaction<T>({
     required Future<T> Function(Transaction transaction) transactionHandler,
     Duration timeout = const Duration(seconds: 30),
     int maxAttempts = 5,
@@ -206,7 +211,7 @@ class FirebaseFirestoreHelper {
     );
   }
 
-  Future<void> batch<T extends Object>({
+  Future<void> batch({
     /// writeBatch.commit();を必ず呼ぶこと
     required FutureOr<void> Function(WriteBatch writeBatch) batchHandler,
   }) async {
@@ -253,6 +258,8 @@ class PaginationBuilder<T> {
 
   static final _db = FirebaseFirestore.instance;
 
+  final _helper = FirebaseFirestoreHelper.instance;
+
   QueryDocumentSnapshot<T>? _lastDocument;
 
   Future<List<Document<T>>> get({GetOptions? getOptions}) async {
@@ -271,7 +278,7 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: FirebaseFirestoreHelper._reference(e.id),
+            reference: _helper.documentReference(documentPath: e.id),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -302,7 +309,7 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: FirebaseFirestoreHelper._reference(e.id),
+            reference: _helper.documentReference(documentPath: e.id),
             data: e.data(),
             metadata: e.metadata,
           ),

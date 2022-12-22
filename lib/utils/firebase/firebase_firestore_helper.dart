@@ -137,7 +137,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: documentReference(documentPath: e.id),
+            reference: documentReference(documentPath: e.reference.path),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -176,7 +176,7 @@ class FirebaseFirestoreHelper {
         .map(
           (e) => Document(
             id: e.id,
-            reference: documentReference(documentPath: e.id),
+            reference: documentReference(documentPath: e.reference.path),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -278,7 +278,9 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: _helper.documentReference(documentPath: e.id),
+            reference: _helper.documentReference(
+              documentPath: e.reference.path,
+            ),
             data: e.data(),
             metadata: e.metadata,
           ),
@@ -309,7 +311,9 @@ class PaginationBuilder<T> {
         .map(
           (e) => Document(
             id: e.id,
-            reference: _helper.documentReference(documentPath: e.id),
+            reference: _helper.documentReference(
+              documentPath: e.reference.path,
+            ),
             data: e.data(),
             metadata: e.metadata,
           ),

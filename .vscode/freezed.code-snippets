@@ -5,6 +5,7 @@
     "description": "Create a Freezed class",
     "body": [
       "// ignore: unused_import",
+      "import 'package:flutter/foundation.dart';",
       "import 'package:freezed_annotation/freezed_annotation.dart';",
       "",
       "part '$TM_FILENAME_BASE.freezed.dart';",
